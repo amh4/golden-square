@@ -22,6 +22,11 @@ RSpec.describe TaskList do
       task_list.add(task_2)
       expect(task_list.all).to eq [task_1, task_2]
     end
+    
+    it "returns empty array when there are no tasks" do
+      task_list = TaskList.new
+      expect(task_list.all).to eq []
+    end
   end
 
   it "returns false because all tasks are not done" do
@@ -44,5 +49,10 @@ RSpec.describe TaskList do
     task_list.add(task_1)
     task_list.add(task_2)
     expect(task_list.all_complete?).to eq true
+  end
+  
+  it "returns false because list is empty" do
+    task_list = TaskList.new
+    expect(task_list.all_complete?).to eq false
   end
 end
